@@ -1,0 +1,25 @@
+$dr-primary: #23262f;
+$dr-secondary: #151517;
+$dr-yellow: #d6b636;
+
+$dr-text-primary: #B1B5C3;
+$dr-text-seconday: #B7B7B3;
+
+@media screen and (max-width: 577px) {
+    .image-size {
+        max-width: 100% !important;
+    }
+
+    .folder,
+    .project {
+        h3 {
+            font-size: 18px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .position-abs {
+        position: static !important;
+    }
+}
