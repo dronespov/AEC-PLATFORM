@@ -3,7 +3,7 @@
 //Template config options
 const themeConfig = {
   app: {
-    appName: 'DronesPov',
+    appName: 'Drones sPov',
     appLogoImage: require('@src/assets/images/drone-images/logo.png').default
   },
   layout: {

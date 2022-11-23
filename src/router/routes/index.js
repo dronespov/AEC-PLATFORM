@@ -4,7 +4,7 @@ import PagesRoutes from './Pages'
 import DashboardRoutes from './Dashboards'
 
 // ** Document title
-const TemplateTitle = '%s - DronePOV Customer Panel'
+const TemplateTitle = '%s - Drones POV Customer Panel'
 
 // ** Default Route
 const DefaultRoute = '/dashboard'

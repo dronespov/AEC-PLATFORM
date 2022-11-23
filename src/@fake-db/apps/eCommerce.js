@@ -46,7 +46,7 @@ const data = {
     {
       id: 4,
       name: 'Ronyes Unisex College Bag Bookbags for Women',
-      slug: '3-dr-propellers-for-3-dr-solo-drones-2-pack-black-4',
+      slug: '3-dr-propellers-for-3-dr-solo-Drones s-2-pack-black-4',
       description:
         'Made of high quality water-resistant material; padded and adjustable shoulder straps; external USB with built-in charging cable offers a convenient charging',
       brand: 'Ronyes',

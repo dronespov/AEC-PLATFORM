@@ -5,19 +5,30 @@ const config = useJwt.jwtConfig
 
 // ** Handle User Login
 export const handleLogin = data => {
+  console.log(data)
   return dispatch => {
     dispatch({
       type: 'LOGIN',
       data,
       config,
-      [config.storageTokenKeyName]: data[config.storageTokenKeyName],
-      [config.storageRefreshTokenKeyName]: data[config.storageRefreshTokenKeyName]
+      [config.storageTokenKeyName]: data.data[config.storageTokenKeyName],
+      [config.storageRefreshTokenKeyName]: data.data[config.storageRefreshTokenKeyName]
     })
 
     // ** Add to user, accessToken & refreshToken to localStorage
-    localStorage.setItem('auth', JSON.stringify(data.user))
-    if (data.token) {
-      localStorage.setItem('token', data.token)
+    const user = data.data.user
+    user['is_remember'] = data.remember
+    window.localStorage.is_remember = JSON.stringify(data.remember)
+    if (data.remember) {
+      localStorage.setItem('auth', JSON.stringify(user))
+      if (data.data.token) {
+        localStorage.setItem('token', data.data.token)
+      }
+    } else {
+      sessionStorage.setItem('auth', JSON.stringify(user))
+      if (data.data.token) {
+        sessionStorage.setItem('token', data.data.token)
+      }
     }
 
     //localStorage.setItem(config.storageTokenKeyName, JSON.stringify(data.token))
@@ -31,8 +42,14 @@ export const handleLogout = () => {
     dispatch({ type: 'LOGOUT', [config.storageTokenKeyName]: null, [config.storageRefreshTokenKeyName]: null })
 
     // ** Remove user, accessToken & refreshToken from localStorage
-    localStorage.removeItem('auth')
-    localStorage.removeItem('token')
+    const type = JSON.parse(localStorage.getItem('is_remember'))
+    if (type) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('auth')
+    } else {
+      sessionStorage.removeItem('token')
+      sessionStorage.removeItem('auth')
+    }
     //localStorage.removeItem(config.storageTokenKeyName)
     //localStorage.removeItem(config.storageRefreshTokenKeyName)
   }

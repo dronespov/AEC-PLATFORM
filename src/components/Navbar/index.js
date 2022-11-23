@@ -22,12 +22,11 @@ const Navbar = () => {
                             <img src={require('../../assets/images/drone-images/logo.png').default} />
                         </Col>
                         {(window.location.pathname.includes('projects') || window.location.pathname.includes('folder')) ? <Col xl="6" lg="6" md="6" sm="6" xs="12" className="text-center">
-                            <FormGroup className="mb-0">
+                            <FormGroup className="mb-0 search-box">
                                 <InputGroup className='input-group-merge px-md-5'>
                                     <Input
-                                        type='email'
-                                        id='login-email'
-                                        name='login-email'
+                                        type='text'
+                                        name='searchtext'
                                         placeholder='Search'
                                         className="input-left py-2"
                                     />
@@ -50,7 +49,7 @@ const Navbar = () => {
 
                             </div>
                         </Col>}
-                        {(window.location.pathname.includes('projects') || window.location.pathname.includes('folder')) ? <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-center align-items-center">
+                        {(window.location.pathname.includes('projects') || window.location.pathname.includes('folder')) ? <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-end align-items-center">
                             <p className="text-yellow text-underline border-right-nav mb-0 px-2 py-1 cursor-pointer" onClick={() => toggleFeedback()}>Feedback</p>
                             <div className="border-right-nav px-2 d-flex align-items-center py-1">
                                 <img src={require('../../assets/images/drone-images/notification.png').default} className="img-fluid" />
@@ -58,7 +57,7 @@ const Navbar = () => {
                             <div className="px-2">
                                 <img src={require('../../assets/images/drone-images/avatar-blank.png').default} className="img-fluid cursor-pointer" onClick={() => history.push('/profile')} />
                             </div>
-                        </Col> : <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-center align-items-center">
+                        </Col> : <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-end align-items-center">
                             <div className="d-flex border-right-nav align-items-center px-1">
                                 <img src={require('../../assets/images/drone-images/arrow-right.png').default} className="img-fluid mr-1" />
 
@@ -68,7 +67,7 @@ const Navbar = () => {
 
                             </div>
                             <div className="d-flex align-items-center px-1">
-                                <img src={require('../../assets/images/drone-images/avatar-blank.png').default} width={40} height={40} className="img-fluid" onClick={() => history.push('/profile')} />
+                                <img src={require('../../assets/images/drone-images/avatar-blank.png').default} width={40} height={40} className="img-fluid cursor-pointer" onClick={() => history.push('/profile')} />
 
                             </div>
                         </Col>}

@@ -47,17 +47,18 @@ const NotVerified = () => {
       <Col lg='12' sm='12'>
         <Card className='w-100'>
           <CardBody className='px-5 py-5'>
+            <div className='text-center mb-3'>
+              <Link className='brand-logo' to='/' onClick={e => e.preventDefault()}>
+                <img src={require('../../../assets/images/drone-images/logo.png').default} />
+              </Link>
+            </div>
             <div className='w-100'>
-              <h2 className='mb-3'>Verify Your Email Address</h2>
-              <h5 className='mb-2'>
-                Before proceeding, please check your email for a verification link. 
-              </h5>
-              <p>If didn't receive the verification email? <span className='btn-link' onClick={resendEmail}>Click here</span> and we will send another one your way. </p>
+              <h2 className='mb-3'>This link in invalid or expired. Please click here to reset your password.</h2>
             </div>
           </CardBody>
         </Card>
-      </Col>
-    </Row>
+      </Col >
+    </Row >
   )
 }
 export default NotVerified

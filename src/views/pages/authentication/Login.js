@@ -33,7 +33,7 @@ const Login = () => {
   const history = useHistory()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [buttonDisable, setButtonDisable] = useState(false)
+  const [buttonDisable, setButtonDisable] = useState(false), [remember, setRemember] = useState(false)
 
   const onSubmit = data => {
     const params = {
@@ -55,7 +55,11 @@ const Login = () => {
             return false
           } else {
             setButtonDisable(false)
-            dispatch(handleLogin(response.data))
+            const result = {
+              data: response.data,
+              remember: remember
+            }
+            dispatch(handleLogin(result))
             ability.update([
               {
                 action: 'manage',
@@ -63,7 +67,7 @@ const Login = () => {
               }
             ])
             history.push("/projects")
-            OpenNotification('success', `Welcome, ${response.data.user.first_name}`, 'You have successfully logged in as an user to DronePOV. Now you can start to explore. Enjoy!')
+            OpenNotification('success', `Welcome, ${response.data.user.first_name}`, 'You have successfully logged in as an user to Drones POV. Now you can start to explore. Enjoy!')
           }
         })
       // .catch(err => {
@@ -73,11 +77,21 @@ const Login = () => {
     }
   }
 
+
+  const RememberMe = (event) => {
+    console.log(event.target.checked)
+    if (event.target.checked) {
+      setRemember(!remember)
+    } else {
+      setRemember(!remember)
+    }
+  }
+
   return (
     <>
       <div>
         <Row>
-          <Col xl="5" lg="5" md="12" sm="12" xs="12" className="bg-left-auth d-flex justify-content-center ">
+          <Col xl="5" lg="5" md="12" sm="12" xs="12" className="bg-left-auth d-flex justify-content-center align-items-center">
             <div className="p-3 my-3">
               <Col className='px-xl-3 mx-auto' xs="12" sm='12' md='12' lg='12'>
                 <div className='text-center mb-3'>
@@ -106,33 +120,36 @@ const Login = () => {
                         name='loginEmail'
                         placeholder='example@site.com'
                         onChange={e => setEmail(e.target.value)}
-                        className="input-left py-2"
+                        className="input-left text-indent py-2"
                         innerRef={register({ required: true, validate: value => value !== '' })}
                       />
                     </InputGroup>
                     <small className="text-danger">{errors.loginEmail?.message}</small>
                   </FormGroup>
-                  <FormGroup className="mt-2">
+                  <FormGroup className="mt-2 password-group">
                     <div className='d-flex justify-content-between'>
-                      <Label className='form-label dr-text-primary' for='login-password'>
-                        Password
+                      <Label className='form-label dr-text-primary' for='loginPassword'>
+                        Password<span></span>
                       </Label>
                     </div>
-                    <InputPasswordToggle
-                      value={password}
-                      id='loginPassword'
-                      name='loginPassword'
-                      className='input-group-merge'
-                      onChange={e => setPassword(e.target.value)}
-                      placeholder="........................."
-                      inputClassName="input-left py-2"
-                      innerRef={register({ required: true, validate: value => value !== '' })}
-                    />
+                    <InputGroup className='input-group-merge'>
+                      <InputPasswordToggle
+                        value={password}
+                        id='loginPassword'
+                        name='loginPassword'
+                        className='input-left'
+                        onChange={e => setPassword(e.target.value)}
+                        placeholder="........................."
+                        inputClassName="input-left text-indent py-2"
+                        innerRef={register({ required: true, validate: value => value !== '' })}
+                      />
+                    </InputGroup>
                     <small className="text-danger">{errors.loginPassword?.message}</small>
                   </FormGroup>
+
                   <div className='d-flex flex-column flex-sm-row justify-content-between mt-2'>
                     <FormGroup>
-                      <CustomInput type='checkbox' className='dr-text-primary' id='remember-me' label='Keep me signed in' />
+                      <CustomInput type='checkbox' className='dr-text-primary' id='remember-me' label='Keep me signed in' onClick={RememberMe} />
                     </FormGroup>
                     <Link to='/forgot-password' className='text-right'>
                       <span className='dr-text-primary '>Forgot Password?</span>
@@ -148,9 +165,9 @@ const Login = () => {
                     <span className='dr-text-primary'>Sign Up</span>
                   </Link>
                 </p>
-                <footer className='dr-text-primary text-center'>©2022. ALL RIGHTS RESERVED</footer>
               </Col>
             </div>
+            <footer className='dr-text-primary text-center position-abs3'>©2022. ALL RIGHTS RESERVED</footer>
           </Col>
           <Col xl="7" lg="7" md="12" sm="12" xs="12" className="bg-right-signin d-none d-lg-block">
             <div className='p-1 my-3'>

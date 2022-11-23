@@ -47,7 +47,7 @@ const Timeline = props => {
                   </div>
                   <CustomInput
                     type='checkbox'
-                    className='form-check'
+                    className='ml-5 form-check'
                     id='Primary'
                     inline
                   />

@@ -8,17 +8,17 @@ import HeaderDashboard from "../../../components/header_dashboard"
 import { FcFolder } from 'react-icons/fc'
 import Sidebar from "../../../components/sidebar"
 
-const Drone = () => {
+const Drones = () => {
 
     return (
         <>
             <Navbar />
-            <div className="container py-2">
+            <div className="p-2">
                 <Row>
-                    <Col lg="3" xl="3" xs="12" sm="12" md="3">
+                    <Col lg="3" xl="2" xs="12" sm="12" md="3">
                         <Sidebar />
                     </Col>
-                    <Col lg="9" xl="9" md="9" className="position-rel2 mt-4 mt-md-0">
+                    <Col lg="9" xl="10" md="9" className="position-rel2 mt-4 mt-md-0">
                         <HeaderDashboard />
                     </Col>
                 </Row>
@@ -27,4 +27,4 @@ const Drone = () => {
     )
 }
 
-export default Drone
+export default Drones 

@@ -33,8 +33,12 @@ const FileUpload = ({ setCroppedImage, aspectRatio, doCrop }) => {
         setBtnSubmitted(true)
 
         const header = {}
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+          token = sessionStorage.getItem('token')
+        }
 
-        const token = localStorage.getItem('token')
         if (token) {
           header["Authorization"] = `Bearer ${token}`
         }

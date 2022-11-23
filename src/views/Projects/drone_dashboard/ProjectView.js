@@ -95,16 +95,16 @@ const ProjectView = ({ activeView }) => {
                 </DropdownToggle>
                 <DropdownMenu right className="bg-submenu">
                     <DropdownItem className='w-100' onClick={() => toggle()}>
-                        <img src={require('../../../assets/images/drone-images/share.png').default} /> <span className='align-middle text-white'>Share Project</span>
+                        <img src={require('../../../assets/images/drone-images/share.png').default} width={15} /> <span className='align-middle text-white ml-1'>Share Project</span>
                     </DropdownItem>
                     <DropdownItem className='w-100'>
-                        <img src={require('../../../assets/images/drone-images/reports.png').default} /> <span className='align-middle text-white'>Reports</span>
+                        <img src={require('../../../assets/images/drone-images/reports.png').default} width={15} /> <span className='align-middle text-white ml-1'>Reports</span>
                     </DropdownItem>
                     <DropdownItem className='w-100' onClick={() => toggle()}>
-                        <img src={require('../../../assets/images/drone-images/move-to-folder.png').default} /> <span className='align-middle text-white'>Move to Folder</span>
+                        <img src={require('../../../assets/images/drone-images/move-to-folder.png').default} width={15} /> <span className='align-middle text-white ml-1'>Move to Folder</span>
                     </DropdownItem>
                     <DropdownItem className='w-100' onClick={() => toggleDelete()}>
-                        <img src={require('../../../assets/images/drone-images/delete.png').default} /> <span className='align-middle text-white'>Delete</span>
+                        <img src={require('../../../assets/images/drone-images/delete.png').default} width={15} /> <span className='align-middle text-white ml-1'>Delete</span>
                     </DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
@@ -117,7 +117,7 @@ const ProjectView = ({ activeView }) => {
         <>
             {activeView === 'grid' && <Row className="mt-3">
                 {images && images.length > 0 && images.map((item) => (
-                    <Col xl="4" lg="4" md="6" sm="6" className="mt-2">
+                    <Col xxl="3" xl="4" lg="4" md="6" sm="6" className="mt-2">
                         <div className="bg-project p-1 position-rel1">
                             {item.image}
                             <div className="d-flex justify-content-between align-items-center mt-1">
@@ -133,20 +133,20 @@ const ProjectView = ({ activeView }) => {
             </Row>}
             {
                 activeView === 'list' && <><Row className="bg-submenu rounded py-1 mr-1 align-items-center justify-content-center mt-3">
-                    <Col xl="7">
+                    <Col xl="6">
                         <h4 className="text-white">Project Name</h4>
                     </Col>
-                    <Col xl="5">
+                    <Col xl="6">
                         <h4 className="text-white">Created on</h4>
                     </Col>
                 </Row>
 
                     {listImages && listImages.length > 0 ? listImages.map((item) => (
                         <Row className="bg-nav align-items-center justify-content-center rounded mr-1 py-1 mt-1">
-                            <Col xl="7" className="d-flex align-items-center">
+                            <Col xl="6" className="d-flex align-items-center">
                                 <span>{item.image}</span><h5 className="text-white mb-0 ml-1">{item.title}</h5>
                             </Col>
-                            <Col xl="5" className="d-flex justify-content-between">
+                            <Col xl="6" className="d-flex justify-content-between">
                                 <p className="dr-text-primary mb-0">Created on Sep 24, 2022</p>
                                 <VerticalDropDown />
                             </Col>

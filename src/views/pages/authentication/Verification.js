@@ -27,7 +27,7 @@ const Verification = () => {
 
     if (typeof token === undefined) {
       OpenNotification('error', 'Oops!', 'Invalid Token!')
-      history.push('/')
+      history.push('/register')
       return false
     }
 
@@ -47,38 +47,38 @@ const Verification = () => {
           } else {
             OpenNotification('success', 'Success!', 'Account has ben verified successfully. Please login and start to explore!')
           }
-          history.push('/')
+          history.push('/register')
         })
         .catch(err => {
           setButtonDisable(false)
           OpenNotification('error', 'Oops!', 'Something went wrong!')
-          history.push('/')
+          history.push('/register')
         })
 
     } else {
       OpenNotification('error', 'Oops!', 'Invalid Token!')
-      history.push('/')
+      history.push('/register')
     }
   }
 
   useEffect(() => {
-    processRequest()
+    setTimeout(() => {
+      processRequest()
+    }, [10000])
   }, [])
 
   if (!isUserLoggedIn()) {
     return (
       <div className='auth-wrapper auth-v2'>
         <Row className='auth-inner m-0'>
-          <Col className='d-flex align-items-center px-5 py-5' lg='12' sm='12'>
-            <Card className='w-100 h-100 text-center'>
-              <CardBody className='d-flex flex-column align-items-center justify-content-center'>
-                <div>
-                  <img src={logo} width={200} />
-                </div>
-                <h4 className='mt-3 mb-3'>Please wait while we are processing your request..</h4>
-                <Spinner />
-              </CardBody>
-            </Card>
+          <Col className='d-flex align-items-center justify-content-center px-1 py-1' lg='12' sm='12'>
+            <div className='d-flex flex-column align-items-center '>
+              <div>
+                <img src={logo} />
+              </div>
+              <h4 className='mt-3 mb-3 text-white'>Please wait while we are processing your request..</h4>
+              <Spinner />
+            </div>
           </Col>
         </Row>
       </div>

@@ -1,14 +1,20 @@
 import React from 'react'
 import { Row, Col, Card, CardBody } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 const PrivacyPolicy = () => {
     return (
         <>
             <Row className='content-title pt-75'>
-                <Col className='text-center privacy' sm='12'>
-                    <h1 className='text-white'>Privacy Policy</h1>
+                <Col className='text-center privacy d-flex align-items-center ml-2' sm='12'>
+                    <div className='text-center'>
+                        <Link className='brand-logo' to='/register' onClick={e => e.preventDefault()}>
+                            <img src={require('../../assets/images/drone-images/logo.png').default} />
+                        </Link>
+                    </div>
                 </Col>
-                <Col sm='12'>
+                <Col sm='12' className="px-3">
+                    <h1 className='text-white text-center my-2'>Privacy Policy</h1>
                     <Card className='text-justify bg-light-secondary privacy shadow-none py-1'>
                         <CardBody>
                             <p>Effective September 1, 2022</p>

@@ -72,6 +72,11 @@ body {
 	color: $dr-yellow !important;
 }
 
+.progress-bar {
+	background-color: #36b9d6 !important;
+}
+
+
 // .bg-middle {
 // 	background-image: URL('../images/drone-images/middle-section.png');
 // 	background-repeat: no-repeat;
@@ -118,10 +123,70 @@ body {
 	background-color: #7367f0;
 }
 
+.custom-control-inline {
+	margin-right: 0px !important;
+}
+
+.search-box {
+	.input-group-text {
+		background: $dr-secondary;
+		border: $dr-secondary;
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+		border-top-right-radius: 0.357rem !important;
+		border-bottom-right-radius: 0.357rem !important;
+	}
+}
+
+.timeline .timeline-item .timeline-point.timeline-point-indicator {
+	background-color: $dr-yellow !important;
+}
+
+.card-congratulations {
+
+	.avatar-content {
+		background-color: $dr-yellow !important;
+	}
+}
+
+.Toastify__toast {
+	background-color: $dr-secondary !important;
+}
+
+.Toastify__toast .Toastify__close-button svg {
+	fill: white !important;
+}
+
+.toastify-body {
+	span {
+		color: white !important;
+	}
+}
+
+.password-group {
+	.input-group {
+		border-radius: 6px !important;
+	}
+
+	.input-group-append {
+		margin-right: 10px !important;
+	}
+}
+
+.custom-control-input:checked~.custom-control-label:before {
+	border-color: #d6b636 !important;
+	background-color: #d6b636 !important;
+}
+
 .input-group-text {
 	background: $dr-secondary;
 	border: $dr-secondary;
+	border-top-left-radius: 0.357rem !important;
+	border-bottom-left-radius: 0.357rem !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
 }
+
 
 .position-rel {
 	position: relative;
@@ -219,9 +284,22 @@ body {
 	}
 }
 
+.text-indent {
+	text-indent: 10px;
+}
+
+.text-blue {
+	color: #36b9d6 !important;
+}
+
 .position-abs3 {
 	position: absolute;
 	bottom: 10px;
+}
+
+.position-abs5 {
+	position: absolute;
+	top: 30%;
 }
 
 .modal-content,
@@ -844,10 +922,6 @@ $RibbonThumb: '@src/assets/images/pages/ribbons.png';
 	color: #2875bd !important;
 }
 
-.progress-bar {
-	text-align: center;
-	background-color: #2875bd;
-}
 
 .vjs-live {
 	.vjs-time-control {
@@ -1104,11 +1178,6 @@ a {
 	background-position: unset;
 }
 
-.form-control:focus {
-	background-color: #fff;
-	border-color: #2875bd !important;
-	box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);
-}
 
 .price-applied {
 	text-decoration: line-through;

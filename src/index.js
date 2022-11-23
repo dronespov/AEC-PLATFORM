@@ -45,6 +45,7 @@ import * as serviceWorker from './serviceWorker'
 // ** Lazy load app
 const LazyApp = lazy(() => import('./App'))
 
+
 ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<Spinner />}>

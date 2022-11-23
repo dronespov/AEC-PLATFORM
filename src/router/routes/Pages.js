@@ -35,8 +35,17 @@ const PagesRoutes = [
     }
   },
   {
-    path: '/email/verify',
-    component: lazy(() => import('../../views/pages/authentication/UnVerified')),
+    path: '/verification-message',
+    component: lazy(() => import('../../views/pages/authentication/VerificationMessage')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/account/activate/:token',
+    component: lazy(() => import('../../views/pages/authentication/Verification')),
+    layout: 'BlankLayout',
     meta: {
       publicRoute: true
     }

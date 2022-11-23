@@ -9,7 +9,7 @@ const openNotification = (type, message, description) => (
 )
 
 const Storage = {
-    isLogedin: (para) => {  
+    isLogedin: (para) => {
         return localStorage.getItem('token') !== null
     },
     set: (key, value) => {
@@ -36,8 +36,11 @@ const Service = {
             "content-type": "application/json",
             accept: "application/json"
         }
-
-        const token = localStorage.getItem('token')
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+            token = sessionStorage.getItem('token')
+        }
         if (token) {
             header["Authorization"] = `Bearer ${token}`
         }
@@ -46,23 +49,23 @@ const Service = {
             headers: header,
             body: para.body
         })
-        .then((response) => {
-            if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
-                Storage.logout()
-                window.location.href = '/login'
-            } if (response.status === 403) {     //Token Expired
-                Storage.logout()
-                openNotification('error', 'Token Expired!', 'Please login again and check')
-                window.location.href = '/login'
-            } else {
-                return response.json()
-            }
-        }, (error) => {
-            console.log(error)
-            if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
-                openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
-            }
-        })
+            .then((response) => {
+                if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
+                    Storage.logout()
+                    window.location.href = '/login'
+                } if (response.status === 403) {     //Token Expired
+                    Storage.logout()
+                    openNotification('error', 'Token Expired!', 'Please login again and check')
+                    window.location.href = '/login'
+                } else {
+                    return response.json()
+                }
+            }, (error) => {
+                console.log(error)
+                if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
+                    openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
+                }
+            })
         //.then(response => response.json());
     },
     post: (para) => {
@@ -70,8 +73,12 @@ const Service = {
             "content-type": "application/json",
             accept: "application/json"
         }
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+            token = sessionStorage.getItem('token')
+        }
 
-        const token = localStorage.getItem('token')
         if (token) {
             header["Authorization"] = `Bearer ${token}`
         }
@@ -81,19 +88,19 @@ const Service = {
             headers: header,
             body: para.body
         })
-        .then((response) => {
-            if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
-                Storage.logout()
-                window.location.href = '/login'
-            } else {
-                return response.json()
-            }
-        }, (error) => {
-            console.log(error)
-            if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
-                openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
-            }
-        })
+            .then((response) => {
+                if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
+                    Storage.logout()
+                    window.location.href = '/login'
+                } else {
+                    return response.json()
+                }
+            }, (error) => {
+                console.log(error)
+                if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
+                    openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
+                }
+            })
         //.then(response => response.json())
     },
     patch: (para) => {
@@ -102,7 +109,11 @@ const Service = {
             accept: "application/json"
         }
 
-        const token = localStorage.getItem('token')
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+            token = sessionStorage.getItem('token')
+        }
         if (token) {
             header["Authorization"] = `Bearer ${token}`
         }
@@ -112,16 +123,16 @@ const Service = {
             headers: header,
             body: para.body
         })
-        .then((response) => {
-            if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
-                Storage.logout()
-                window.location.href = '/login'
-            } else {
-                return response.json()
-            }
-        }, (error) => {
-            console.log(error)
-        })
+            .then((response) => {
+                if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
+                    Storage.logout()
+                    window.location.href = '/login'
+                } else {
+                    return response.json()
+                }
+            }, (error) => {
+                console.log(error)
+            })
         //.then(response => response.json())
     },
     delete: (para) => {
@@ -130,26 +141,30 @@ const Service = {
             accept: "application/json"
         }
 
-        const token = localStorage.getItem('token')
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+            token = sessionStorage.getItem('token')
+        }
         if (token) {
             header["Authorization"] = `Bearer ${token}`
         }
         return fetch(Config.BASE_URL + para.url, {
             method: "DELETE", headers: header, body: para.body
         })
-        .then((response) => {
-            if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
-                Storage.logout()
-                window.location.href = '/login'
-            } else {
-                return response.json()
-            }
-        }, (error) => {
-            console.log(error)
-            if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
-                openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
-            }
-        })
+            .then((response) => {
+                if (response.status === 401) {     //Unauthorized.  Invalid JWT Token
+                    Storage.logout()
+                    window.location.href = '/login'
+                } else {
+                    return response.json()
+                }
+            }, (error) => {
+                console.log(error)
+                if (error === 'TypeError: NetworkError when attempting to fetch resource.') {
+                    openNotification('error', 'Unable to reach server.', 'Please check your network connectivity')
+                }
+            })
         //.then(response => response.json());
     },
     getImage(image) {
@@ -158,4 +173,4 @@ const Service = {
 }
 
 
-export {Service, Storage}
+export { Service, Storage }

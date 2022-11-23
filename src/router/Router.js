@@ -1,5 +1,5 @@
 // ** React Imports
-import { Suspense, useContext, lazy } from 'react'
+import { Suspense, useContext, lazy, useEffect } from 'react'
 
 // ** Utils
 import { isUserLoggedIn, getUserData } from '@utils'
@@ -66,10 +66,19 @@ const Router = () => {
   const UpdateProfile = lazy(() => import('@src/views/profile/UpdateProfile'))
 
   const getUserProfile = () => {
-    const UserData = JSON.parse(localStorage.getItem('auth'))
-    if (UserData.address_1 === null && UserData.city === null && UserData.zipcode === null && UserData.state === null) {
-      return false
+    const type = JSON.parse(localStorage.getItem('is_remember'))
+    if (type) {
+      const UserData = JSON.parse(localStorage.getItem('auth'))
+      if (UserData.address_1 === null && UserData.city === null && UserData.zipcode === null && UserData.state === null) {
+        return false
+      }
+    } else {
+      const UserData = JSON.parse(sessionStorage.getItem('auth'))
+      if (UserData.address_1 === null && UserData.city === null && UserData.zipcode === null && UserData.state === null) {
+        return false
+      }
     }
+
     return true
   }
   /**
@@ -121,8 +130,15 @@ const Router = () => {
     { /* If user is logged in Redirect user to verification email */ }
     const url = window.location.pathname
     if (url.includes('/sso/') || url.includes('/account/verify/') || url.includes('/code/') || url.includes('/account/subscription/') || url.includes('/account/plan/update/')) {
-      localStorage.removeItem('token')
-      localStorage.removeItem('auth')
+      const type = JSON.parse(localStorage.getItem('is_remember'))
+      if (type) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('auth')
+      } else {
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('auth')
+      }
+
     }
 
     return Object.keys(Layouts).map((layout, index) => {

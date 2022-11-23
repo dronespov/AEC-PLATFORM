@@ -43,7 +43,11 @@ const UploadImage = ({ setCroppedImage, hiddenLabel, labelName }) => {
         const blobToFile = new File([response], response.name, { type: response.type })
         const form = new FormData()
         form.append('file', blobToFile)
-        const token = localStorage.getItem("token")
+        const type = JSON.parse(localStorage.getItem('is_remember'))
+        let token = localStorage.getItem('token')
+        if (!type) {
+            token = sessionStorage.getItem('token')
+        }
         const header = {
             "x-access-token": token
         }
@@ -76,7 +80,7 @@ const UploadImage = ({ setCroppedImage, hiddenLabel, labelName }) => {
         const allowedExtension = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp']
 
         if (e.target.files && e.target.files.length > 0) {
-           
+
             if (allowedExtension.indexOf(e.target.files[0].type) > -1) {
                 setCrop(undefined) // Makes crop preview update between images.
                 const reader = new FileReader()

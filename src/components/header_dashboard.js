@@ -17,11 +17,11 @@ const HeaderDashboard = () => {
             <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
                 <h2 className="text-white mt-3 mt-sm-0 mb-0 order-2 order-sm-1">All Project</h2>
                 <div className="d-flex order-1 order-sm-1">
-                    <div className="d-flex align-items-center folder mr-2 py-1 px-1 px-lg-3 cursor-pointer" >
+                    <div className="d-flex align-items-center folder mr-2 py-1 px-1 px-lg-2 cursor-pointer" >
                         <img src={require('../assets/images/drone-images/add-project.png').default} className="img-fluid" />
                         <h3 className="text-secondary font-weight-bold ml-1 mb-0">Folder</h3>
                     </div>
-                    <div className="d-flex align-items-center folder py-1 px-1 px-lg-3 cursor-pointer" onClick={() => toggleProject()}>
+                    <div className="d-flex align-items-center folder py-1 px-1 px-lg-2 cursor-pointer" onClick={() => toggleProject()}>
                         <FiMapPin color="#d6b636" size={25} />
                         <h3 className="text-secondary font-weight-bold ml-1 mb-0">Project</h3>
                     </div>

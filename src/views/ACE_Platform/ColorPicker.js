@@ -17,10 +17,10 @@ const ColorPicker = () => {
     return (
         <>
             <Row className="align-items-center">
-                <Col lg="4" className="d-flex align-items-center">
+                <Col lg="4" className="d-flex align-items-center pr-1">
                     <img src={require('../../assets/images/drone-images/picker-icon.png').default} className="img-fluid" />
                     <h5 className="text-white">Color</h5>
-                    <div style={{ backgroundColor: `${currentColor}` }} className="rounded d-flex justify-content-center ml-1" onClick={() => togglePicker()}>
+                    <div style={{ backgroundColor: `${currentColor}` }} className="rounded d-flex justify-content-center" onClick={() => togglePicker()}>
                         <img src={require('../../assets/images/drone-images/Vector.png').default} className="img-fluid m-1" />
                     </div>
                 </Col>

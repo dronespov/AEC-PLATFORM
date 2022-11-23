@@ -12,7 +12,13 @@ const CardCongratulations = () => {
   const [userData, setUserData] = useState(null)
   useEffect(() => {
     if (isUserLoggedIn() !== null) {
-      setUserData(JSON.parse(localStorage.getItem('auth')))
+      const type = JSON.parse(localStorage.getItem('is_remember'))
+      if (type) {
+        setUserData(JSON.parse(localStorage.getItem('auth')))
+      } else {
+        setUserData(JSON.parse(sessionStorage.getItem('auth')))
+      }
+
     }
   }, [])
 

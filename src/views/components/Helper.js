@@ -22,14 +22,14 @@ const OpenToast = ({ color, title, message }) => (
 
 const OpenNotification = (type, title, message) => {
   toast[type](<OpenToast color={(type === 'error') ? 'danger' : type} title={title} message={message} />, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true
+    position: "top-right",
+    autoClose: 10000,
+    hideProgressBar: true
   })
 }
 
 const formatPhoneNumber = (value) => {
-   
+
   if (!value) return value
 
   const phoneNumber = value.replace(/[^\d]/g, '')
@@ -64,7 +64,7 @@ const checkStatus = async (url) => {
 }
 
 const getvideoStatus = async (url) => {
- const data = await checkStatus(url)
+  const data = await checkStatus(url)
   console.log(data)
 }
 

@@ -43,7 +43,12 @@ const NotificationDropdown = () => {
   //** ComponentDidMount
   useEffect(() => {
     if (isUserLoggedIn() !== null) {
-      setProfileData(JSON.parse(localStorage.getItem('auth')))
+      const type = JSON.parse(localStorage.getItem('is_remember'))
+      if (type) {
+        setProfileData(JSON.parse(localStorage.getItem('auth')))
+      } else {
+        setProfileData(JSON.parse(sessionStorage.getItem('auth')))
+      }
     }
   }, [userData])
 
@@ -91,11 +96,11 @@ const NotificationDropdown = () => {
 
   const handleNavigation = (item) => {
 
-    Service.patch({ url: `/notification/update/${item.id}`})
+    Service.patch({ url: `/notification/update/${item.id}` })
       .then(response => {
         getNotifications()
         history.push(`/campaign/view/${item.group_id}`)
-    })
+      })
   }
 
   // ** Function to render Notifications
