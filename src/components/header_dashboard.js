@@ -2,20 +2,27 @@ import React, { useState } from 'react'
 import { FiMapPin } from "react-icons/fi"
 import { useHistory } from 'react-router-dom'
 import CreateProject from '../views/Projects/drone_dashboard/CreateProject'
-import ProjectView from '../views/Projects/drone_dashboard/ProjectView'
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap'
 
-const HeaderDashboard = () => {
+const HeaderDashboard = ({ activeView, setActiveView }) => {
 
     const [openProject, setOpenProject] = useState(false)
-    const [activeView, setActiveView] = useState('grid')
 
     const toggleProject = () => setOpenProject(!openProject)
 
-    const history = useHistory()
     return (
         <>
             <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
-                <h2 className="text-white mt-3 mt-sm-0 mb-0 order-2 order-sm-1">All Project</h2>
+                <div>
+                    {window.location.pathname.includes('folder') && <Breadcrumb>
+                        <BreadcrumbItem><h2 className='text-white'>All Project</h2></BreadcrumbItem>
+                        <BreadcrumbItem active><h2 className='text-white'>Folder Name</h2></BreadcrumbItem>
+                    </Breadcrumb>}
+                    {window.location.pathname.includes('projects') && <Breadcrumb>
+                        <BreadcrumbItem><h2 className='text-white'>All Project</h2></BreadcrumbItem>
+                    </Breadcrumb>}
+                </div>
+
                 <div className="d-flex order-1 order-sm-1">
                     <div className="d-flex align-items-center folder mr-2 py-1 px-1 px-lg-2 cursor-pointer" >
                         <img src={require('../assets/images/drone-images/add-project.png').default} className="img-fluid" />
@@ -33,7 +40,6 @@ const HeaderDashboard = () => {
                     </div>}
                 </div>
             </div>
-            <ProjectView activeView={activeView} />
             <CreateProject isOpen={openProject} toggle={toggleProject} />
         </>
     )

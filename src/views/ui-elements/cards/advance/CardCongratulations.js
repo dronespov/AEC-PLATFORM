@@ -29,7 +29,7 @@ const CardCongratulations = () => {
         <img className='congratulations-img-right' src={decorationRight} alt='decor-right' />
         <Avatar icon={<Award size={28} />} className='shadow' color='primary' size='xl' />
         <div className='text-center'>
-          <h1 className='mb-1 text-white'>Welcome {userData && userData.firstName}</h1>
+          <h1 className='mb-1 text-white'>Welcome {userData && userData.first_name}</h1>
         </div>
       </CardBody>
     </Card>

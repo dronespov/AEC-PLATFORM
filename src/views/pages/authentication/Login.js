@@ -70,10 +70,10 @@ const Login = () => {
             OpenNotification('success', `Welcome, ${response.data.user.first_name}`, 'You have successfully logged in as an user to Drones POV. Now you can start to explore. Enjoy!')
           }
         })
-      // .catch(err => {
-      //   setButtonDisable(false)
-      //   OpenNotification('error', 'Oops!', 'Something went wrong!')
-      // })
+        .catch(err => {
+          setButtonDisable(false)
+          OpenNotification('error', 'Oops!', 'Something went wrong!')
+        })
     }
   }
 
@@ -152,7 +152,7 @@ const Login = () => {
                       <CustomInput type='checkbox' className='dr-text-primary' id='remember-me' label='Keep me signed in' onClick={RememberMe} />
                     </FormGroup>
                     <Link to='/forgot-password' className='text-right'>
-                      <span className='dr-text-primary '>Forgot Password?</span>
+                      <span className='dr-text-primary text-underline'>Forgot Password?</span>
                     </Link>
                   </div>
                   <Button.Ripple type='submit' block className="mt-2 bg-btn py-1">
@@ -162,7 +162,7 @@ const Login = () => {
                 <p className='text-center mt-2'>
                   <span className='mr-25 dr-text-primary'>Don't have an account?</span>
                   <Link to='/register'>
-                    <span className='dr-text-primary'>Sign Up</span>
+                    <span className='dr-text-primary text-underline'>Sign Up</span>
                   </Link>
                 </p>
               </Col>

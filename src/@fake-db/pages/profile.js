@@ -12,7 +12,7 @@ const data = {
       joined: 'November 15, 2015',
       lives: 'New York, USA',
       email: 'bucketful@fiendhead.org',
-      website: 'www.Drones POV.com'
+      website: 'www.DronesPOV.com'
     },
     suggestedPages: [
       {

@@ -4,8 +4,7 @@ import { Row, Col, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownTog
 import { MoreVertical } from "react-feather"
 import ShareProject from "./ShareProject"
 import DeleteConfirmation from "../../components/DeleteConfirmation"
-import HeaderDashboard from "../../../components/header_dashboard"
-import { FcFolder } from 'react-icons/fc'
+import ProjectView from "./ProjectView"
 import Sidebar from "../../../components/sidebar"
 
 const Drones = () => {
@@ -19,7 +18,7 @@ const Drones = () => {
                         <Sidebar />
                     </Col>
                     <Col lg="9" xl="10" md="9" className="position-rel2 mt-4 mt-md-0">
-                        <HeaderDashboard />
+                        <ProjectView />
                     </Col>
                 </Row>
             </div>

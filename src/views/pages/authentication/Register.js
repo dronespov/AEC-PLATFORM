@@ -271,11 +271,11 @@ const Register = () => {
                   {(buttonDisable) ? 'Processing...' : 'Sign Up'}
                 </Button.Ripple>
               </Form>}
-              {successMessage && <p className='dr-text-primary'>Thankyou for signing up with Drone POV. You are one step away to enjoy our services.We have sent a verification email to your email. Please check your email (make sure to check your spam/other folders in case you do not see it in your inbox) and complete your email verification.Thankyou!</p>}
+              {successMessage && <p className='dr-text-primary'>Thank you for signing up with Drones POV. You are one step away to enjoy our services. We have sent a verification email to your email. Please check your email (make sure to check your spam/other folders in case you do not see it in your inbox) and complete your email verification. Thank you!</p>}
               <p className='text-center mt-1'>
                 <span className='mr-25 dr-text-primary'>Already have an account?</span>
                 <Link to='/login'>
-                  <span className='dr-text-primary'>Sign In</span>
+                  <span className='dr-text-primary text-underline'>Sign In</span>
                 </Link>
               </p>
             </Col>

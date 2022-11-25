@@ -117,8 +117,8 @@ const UpdateProfile = () => {
         <Col lg='12' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
-              <Row className="justify-content-center">
-                <Col xl="6">
+              <Row >
+                <Col xl="8">
                   <h3 className='text-white'>Personal Information</h3>
                   <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
                     <Row>
@@ -229,32 +229,39 @@ const UpdateProfile = () => {
                     </FormGroup>
                   </Form>
                 </Col>
-                <Col xl="6" className="px-3">
+                {/* <Col xl="6" className="px-3">
 
                   <h3 className='text-white'>Your Photo</h3>
                   <Media className="d-flex mt-3">
                     <Media className='mr-25' left>
                       <Media object className='rounded mr-50' src={Avatar} alt='Generic placeholder image' height='80' width='80' />
                     </Media>
-                    <Media className='mt-75 ml-1' body>
+                    <Media className='mt-2 ml-1' body>
                       <h3 className='text-white'>Edit Your Photo</h3>
-                      <div className='d-flex'>
-                        <h4 className='dr-text-primary mr-2'>
+                      <Button.Ripple className="mt-0 mr-2 dr-text-primary" color='secondary' size='sm' outline>
+                        Delete
+                      </Button.Ripple>
+                      <Button.Ripple tag={Label} className='mr-75 mb-0 text-yellow' size='sm' color='secondary' outline>
+                        Update
+                        <Input type='file' hidden accept='image/*' />
+                      </Button.Ripple>
+                      {/* <div className='d-flex'>
+                        <h4 className=' mr-2'>
                           Delete
                         </h4>
-                        <h4 className='text-yellow'>
+                        <h4 className=''>
                           Update
-                          <Input type='file' hidden accept='image/*' />
+                          <Input type='file' hidden accept='image/*' label='Update' />
                         </h4>
-                      </div>
-                    </Media>
-                  </Media>
-                </Col>
+                      </div> */}
+                {/* </Media>
+            </Media>
+        </Col> */}
               </Row>
             </CardBody>
-          </Card>
-        </Col>
-      </Row>
+          </Card >
+        </Col >
+      </Row >
       <div className='d-flex'>
         <Button.Ripple type='submit' block className="mt-2 bg-save py-1">
           {(buttonDisable) ? <> <Spinner color='white' size='sm' /> </> : 'Save'}

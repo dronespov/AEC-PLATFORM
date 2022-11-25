@@ -103,11 +103,11 @@ const ForgotPassword = () => {
                   </Form>
                 </>}
                 {
-                  successMessage && <div className='dr-text-primary'>Please check your email for verification link. Please note that the verification link is valid for 15 mins after which it expires. Please make sure to check your spam or other folders in case you do not get it in your inbox.</div>
+                  successMessage && <div className='dr-text-primary'>Please check your email for verification link. Please note that the verification link is valid for 10 mins after which it expires. Please make sure to check your spam or other folders in case you do not get it in your inbox.</div>
                 }
                 <p className='text-center mt-2'>
                   <Link to='/login'>
-                    <span className='dr-text-primary align-middle'>Return to Sign In</span>
+                    <span className='dr-text-primary align-middle'>Return to <span className='text-underline'>Sign In</span></span>
                   </Link>
                 </p>
               </Col>

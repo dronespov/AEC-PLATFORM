@@ -134,6 +134,11 @@ const PagesRoutes = [
     meta: {
       publicRoute: true
     }
+  },
+  {
+    path: '/folder',
+    component: lazy(() => import('../../views/Folders/index')),
+    layout: 'BlankLayout'
   }
 ]
 

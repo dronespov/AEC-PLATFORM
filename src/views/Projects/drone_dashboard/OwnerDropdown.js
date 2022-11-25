@@ -5,37 +5,27 @@ import { useState } from 'react'
 
 const OwnerDropdown = () => {
     const [value, setValue] = useState('Owner')
+
     const history = useHistory()
+
     return (
         <>
             <UncontrolledDropdown tag='li' className='dropdown-user nav-item mainTopMenu' onClick={(e) => console.log(e)} >
                 <DropdownToggle href='/' tag='a' className='nav-link dropdown-user-link align-items-center text-white' onClick={e => e.preventDefault()} >
                     {value}&nbsp; <ChevronDown color='#ffffff' size='14' />
                 </DropdownToggle>
-                <DropdownMenu className="bg-owner-dropdown" left>
-                    <DropdownItem >
-                        <div className='d-flex flex-column'>
-                            <span className='dr-text-primary mb-0 order-2'>Amet minim mollit non deserunt ullamco est sit aliqua.</span>
-                            <span className='align-middle text-white order-1'>Owner</span>
-                        </div>
+                <DropdownMenu left className="bg-submenu">
+                    <DropdownItem className={`${value === "Owner" ? "d-flex justify-content-between align-items-center bg-active-menu w-100" : "w-100"}`} onClick={() => setValue('Owner')}>
+                        <span className='align-middle text-white'>Owner</span>
+                        {value === "Owner" && <img src={require('../../../assets/images/drone-images/check.png').default} className="img-fluid" />}
                     </DropdownItem>
-                    <DropdownItem onClick={(e) => setValue(e.target.innerText)}>
-                        <div className='d-flex flex-column'>
-                            <p className='dr-text-primary mb-0 order-2'>People can edit, delete, comment & add the files to their Dropbox</p>
-                            <span className='align-middle text-white order-1'>View</span>
-                        </div>
+                    <DropdownItem className={`${value === "Can View" ? "d-flex justify-content-between align-items-center bg-active-menu w-100" : "w-100"}`} onClick={() => setValue('Can View')}>
+                        <span className='align-middle text-white'>Can View</span>
+                        {value === "Can View" && <img src={require('../../../assets/images/drone-images/check.png').default} className="img-fluid" />}
                     </DropdownItem>
-                    <DropdownItem onClick={(e) => setValue(e.target.innerText)}>
-                        <div className='d-flex flex-column'>
-                            <p className='dr-text-primary mb-0 order-2'>People can view, download & comment</p>
-                            <span className='align-middle text-white order-1'>Can Edit</span>
-                        </div>
-                    </DropdownItem>
-                    <DropdownItem onClick={(e) => setValue(e.target.innerText)}>
-                        <div className='d-flex flex-column'>
-                            <p className='dr-text-primary mb-0 order-2'>Amet minim mollit non deserunt ullamco est sit aliqua.</p>
-                            <span className='align-middle text-white order-1'>Can Upload Map</span>
-                        </div>
+                    <DropdownItem className={`${value === "Can Edit" ? "d-flex justify-content-between align-items-center bg-active-menu w-100" : "w-100"}`} onClick={() => setValue('Can Edit')}>
+                        <span className='align-middle text-white'>Can Edit</span>
+                        {value === "Can Edit" && <img src={require('../../../assets/images/drone-images/check.png').default} className="img-fluid" />}
                     </DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>

@@ -25,7 +25,7 @@ const Sidebar = () => {
                     <img src={require('../assets/images/drone-images/menu.png').default} />
                     <h4 className="ml-1 mb-0 text-white display-5">Dashboard</h4>
                 </div>
-                <div className={`cursor-pointer d-flex align-items-center p-1 mb-2 ${(window.location.href.indexOf('/projects')) > -1 && 'input-left rounded-lg d-block'}`} onClick={() => history.push('/projects')}>
+                <div className={`cursor-pointer d-flex align-items-center p-1 mb-2 ${((window.location.href.indexOf('/projects')) > -1 || (window.location.href.indexOf('/folder')) > -1) && 'input-left rounded-lg d-block'}`} onClick={() => history.push('/projects')}>
                     <img src={require('../assets/images/drone-images/file.png').default} />
                     <h4 className="ml-1 mb-0 text-white display-5">Projects</h4>
                 </div>

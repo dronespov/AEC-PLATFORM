@@ -139,13 +139,12 @@ const ResetPassword = ({ match }) => {
         } else {
           setNewPassword('')
           setConfirmPassword('')
-          setValue('password', '')
-          setValue('cpassword', '')
           OpenNotification('success', 'Success!', 'Your password has been changed successfully!')
           history.push('/login')
         }
       })
       .catch(err => {
+        console.log(err)
         setButtonDisable(false)
         OpenNotification('error', 'Oops!', 'Something went wrong!')
       })

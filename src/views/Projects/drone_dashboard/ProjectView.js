@@ -1,14 +1,21 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Navbar from "../../../components/Navbar"
 import { Row, Col, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from "reactstrap"
 import { MoreVertical } from "react-feather"
 import ShareProject from "./ShareProject"
 import DeleteConfirmation from "../../components/DeleteConfirmation"
 import { FcFolder } from 'react-icons/fc'
+import { useHistory } from "react-router-dom"
+import { Service } from '@src/services/Service'
+import { OpenNotification } from '@src/views/components/Helper'
+import HeaderDashboard from "../../../components/header_dashboard"
+import { sortedLastIndex } from "lodash"
 
-const ProjectView = ({ activeView }) => {
+const ProjectView = () => {
+    const history = useHistory()
     const [isOpen, setIsOpen] = useState(false)
     const [isDelete, setIsDelete] = useState(false)
+    const [activeView, setActiveView] = useState('grid')
 
     const toggleDelete = () => {
         setIsDelete(!isDelete)
@@ -17,44 +24,61 @@ const ProjectView = ({ activeView }) => {
     const toggle = () => {
         setIsOpen(!isOpen)
     }
+    // const getList = () => {
+
+    //     Service.post({
+    //         url: 'project/search',
+    //         body: JSON.stringify({ limit: '10', page: "1" })
+    //     })
+    //         .then(response => {
+    //             console.log(response)
+    //         })
+    //         .catch(err => {
+    //             setButtonDisable(false)
+    //             OpenNotification('error', 'Oops!', 'Something went wrong!')
+    //         })
+    // }
+    // useEffect(() => {
+    //     getList()
+    // }, [])
 
     const images = [
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         },
         {
-            image: <div className="folder-bg d-flex align-items-center justify-content-center"><FcFolder size={50} /></div>,
+            image: <div className="folder-bg d-flex align-items-center justify-content-center cursor-pointer" onClick={() => history.push('/folder')}><FcFolder size={50} /></div>,
             title: 'Folder Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         },
         {
-            image: <div className="folder-bg d-flex align-items-center justify-content-center"><FcFolder size={50} /></div>,
+            image: <div className="folder-bg d-flex align-items-center justify-content-center" onClick={() => history.push('/folder')}><FcFolder size={50} /></div>,
             title: 'Folder Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         },
         {
-            image: <div className="folder-bg d-flex align-items-center justify-content-center"><FcFolder size={50} /></div>,
+            image: <div className="folder-bg d-flex align-items-center justify-content-center" onClick={() => history.push('/folder')}><FcFolder size={50} /></div>,
             title: 'Folder Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         }
     ]
     const listImages = [
         {
-            image: <img src={require('../../../assets/images/drone-images/map1.png').default} className="img-fluid" />,
+            image: <img src={require('../../../assets/images/drone-images/map1.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
             title: 'Project Name'
         },
         {
@@ -111,15 +135,14 @@ const ProjectView = ({ activeView }) => {
         )
     }
 
-
-    console.log("test", window.location.href.indexOf('/projects'))
     return (
         <>
+            <HeaderDashboard activeView={activeView} setActiveView={setActiveView} />
             {activeView === 'grid' && <Row className="mt-3">
                 {images && images.length > 0 && images.map((item) => (
-                    <Col xxl="3" xl="4" lg="4" md="6" sm="6" className="mt-2">
+                    <Col xxl="3" xl="4" lg="4" md="6" sm="6" className="mt-2 cursor-pointer">
                         <div className="bg-project p-1 position-rel1">
-                            {item.image}
+                            <div>{item.image}</div>
                             <div className="d-flex justify-content-between align-items-center mt-1">
                                 <div>
                                     <h4 className="mb-0 text-white">{item.title}</h4>

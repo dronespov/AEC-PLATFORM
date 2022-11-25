@@ -26,7 +26,7 @@ const BreadCrumbs = props => {
             <div className='breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12'>
               <Breadcrumb>
                 <BreadcrumbItem tag='li'>
-                  <Link to='/'>Home</Link>
+                  <Link to='/'>All Projects</Link>
                 </BreadcrumbItem>
                 <BreadcrumbItem tag='li' className='text-primary'>
                   {breadCrumbParent}
@@ -54,7 +54,7 @@ const BreadCrumbs = props => {
         </div>
       </div>
       <div className='content-header-right text-md-right col-md-3 col-12 d-md-block d-none'>
-        
+
       </div>
     </div>
   )

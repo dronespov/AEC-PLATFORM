@@ -8,13 +8,17 @@ $dr-text-seconday: #B7B7B3;
 body {
 	background-color: $dr-secondary !important;
 	overflow-x: hidden !important;
-	overflow-y: scroll !important;
 	font-family: 'Inria Sans', sans-serif;
 }
 
 .text-yellow {
 	color: $dr-yellow !important;
 }
+
+.custom-control-input:active {
+	background-color: $dr-yellow !important;
+}
+
 
 .bg-nav {
 	background-color: $dr-primary !important;
@@ -92,6 +96,38 @@ body {
 .input-left {
 	background-color: $dr-secondary !important;
 	border-color: $dr-secondary !important;
+}
+
+.number {
+	width: 33px;
+	height: 33px;
+	border-radius: 50%;
+	font-size: 12px !important;
+	text-align: center;
+	background: $dr-secondary;
+	color: #fff;
+	padding: 8px;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.border-white {
+	border-color: white !important;
+	color: white !important;
+}
+
+.breadcrumb-item::before {
+	background-size: 28px !important;
+	color: $dr-yellow !important;
+	margin-top: 7px !important;
+}
+
+.position-abs-folder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: unquote("calc(100vh)");
 }
 
 .input-left::placeholder {
@@ -204,11 +240,37 @@ body {
 	background-color: transparent;
 }
 
+.modal-dialog {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: unquote("calc(100vh - 20px)");
+	// 20px offset for the 10px margin on either side
+
+	.modal-content {
+		width: 100%;
+	}
+}
+
 .project {
 	border: 2px solid $dr-yellow;
 	border-radius: 10px;
 	background-color: $dr-yellow;
 	color: black !important;
+}
+
+.text-area-border {
+	border-color: $dr-yellow !important;
+}
+
+.submit-feedback {
+	border: 2px solid $dr-yellow;
+	border-radius: 10px;
+	background-color: $dr-yellow;
+	color: black !important;
+	width: fit-content !important;
+	float: right;
 }
 
 .bg-menu {
@@ -225,6 +287,31 @@ body {
 	height: 275px !important;
 
 
+}
+
+.react-select__menu {
+	background-color: $dr-secondary !important;
+}
+
+.css-1pahdxg-control {
+	background-color: $dr-secondary !important;
+	border-color: $dr-secondary !important;
+	box-shadow: none !important;
+}
+
+.css-yk16xz-control {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+
+.css-1okebmr-indicatorSeparator {
+	display: none !important;
+}
+
+.css-tlfecz-indicatorContainer {
+	svg {
+		color: $dr-yellow !important;
+	}
 }
 
 .dashboard-box {
@@ -249,14 +336,51 @@ body {
 	background-color: #2d313b;
 }
 
+.bg-calendar {
+	background-color: #2d313b;
+	min-width: 800px !important;
+}
+
+.popover {
+	top: 50px !important;
+	min-width: 750px !important;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: #2d313b;
+
+	.arrow {
+		display: none !important;
+	}
+}
+
+.popover .popover-body {
+	border-top-left-radius: 0.358px !important;
+	border-top-right-radius: 0.358px !important;
+	border-color: $dr-primary !important;
+}
+
+.css-1uccc91-singleValue {
+	color: white !important;
+}
+
 .bg-owner-dropdown {
 	background-color: #2d313b;
-	max-width: 300px;
+	min-width: 500px !important;
 
 	a:active {
 		color: $dr-yellow !important;
 		background-color: #3b3c3b;
 	}
+}
+
+.bg-active-menu {
+	color: $dr-yellow !important;
+	background-color: #3b3c3b;
+}
+
+.dropdown-item:hover {
+	background-color: #3b3c3b !important;
 }
 
 .para-dropdown {
@@ -403,6 +527,26 @@ body {
 		border-radius: 50% !important;
 		background-color: transparent !important;
 	}
+}
+
+.calendar-active:active {
+	background-color: $dr-secondary !important;
+	padding: 10px !important;
+}
+
+.bg-select {
+	background-color: $dr-secondary !important;
+	border-radius: 10px;
+	border-color: $dr-secondary;
+	color: white !important;
+}
+
+.congratulations-img-left {
+	display: none !important;
+}
+
+.congratulations-img-right {
+	display: none !important;
 }
 
 // CUSTOM STYLE
