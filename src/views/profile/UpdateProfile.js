@@ -114,7 +114,7 @@ const UpdateProfile = () => {
     <>
       <h2 className='text-white mb-4'>Profile Settings</h2>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='8'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row >

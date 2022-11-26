@@ -31,7 +31,7 @@ const Sidebar = () => {
                 </div>
                 <div className="position-abs px-2 my-3 w-100">
                     <div className="bg-actions rounded px-1 py-1 d-flex justify-content-center align-items-center">
-                        <img src={require('../assets/images/drone-images/settings.png').default} className="mx-1" id="settings" />
+                        <img src={require('../assets/images/drone-images/settings.png').default} className="mx-1 cursor-pointer" id="settings" onClick={() => history.push('/profile')} />
                         <img src={require('../assets/images/drone-images/delete.png').default} className="mx-1" id="trash" />
                         <Link to='/login' >
                             <img src={require('../assets/images/drone-images/back.png').default} id="logout" className="mx-1 cursor-pointer" onClick={() => dispatch(handleLogout())} />

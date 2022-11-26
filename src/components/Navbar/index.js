@@ -48,7 +48,7 @@ const Navbar = () => {
         return (
             <UncontrolledDropdown>
                 <DropdownToggle tag='div' className='btn btn-sm p-0'>
-                    <div className="px-2">
+                    <div className="px-1">
                         <img src={require('../../assets/images/drone-images/avatar-blank.png').default} className="img-fluid cursor-pointer" />
                     </div>
                 </DropdownToggle>
@@ -121,19 +121,19 @@ const Navbar = () => {
                         </div>
                     </Col>}
                     {(window.location.pathname.includes('projects') || window.location.pathname.includes('folder')) ? <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-end align-items-center">
-                        <p className="text-yellow text-underline border-right-nav mb-0 px-2 py-1 cursor-pointer" onClick={() => toggleFeedback()}>Feedback</p>
+                        <h3 className="text-yellow text-underline border-right-nav mb-0 px-2 py-1 cursor-pointer" onClick={() => toggleFeedback()}>Feedback</h3>
                         <div className="border-right-nav px-2 d-flex align-items-center py-1">
                             <img src={require('../../assets/images/drone-images/notification.png').default} className="img-fluid" />
                         </div>
                         <VerticalDropDown />
                     </Col> : <Col xl="3" lg="3" md="3" sm="6" xs="12" className="d-flex justify-content-end align-items-center">
-                        <p className="text-yellow text-underline border-right-nav mb-0 px-2 cursor-pointer" onClick={() => toggleFeedback()}>Feedback</p>
+                        <h3 className="text-yellow text-underline border-right-nav mb-0 px-1 cursor-pointer" onClick={() => toggleFeedback()}>Feedback</h3>
                         <div className="d-flex border-right-nav align-items-center px-1">
-                            <img src={require('../../assets/images/drone-images/arrow-right.png').default} className="img-fluid mr-1" />
+                            <img src={require('../../assets/images/drone-images/arrow-right.png').default} className="img-fluid" />
 
                         </div>
                         <div className="d-flex border-right-nav align-items-center px-1">
-                            <img src={require('../../assets/images/drone-images/notification.png').default} className="img-fluid mx-1" />
+                            <img src={require('../../assets/images/drone-images/notification.png').default} className="img-fluid" />
 
                         </div>
                         <VerticalDropDown />

@@ -24,7 +24,7 @@ import InfoIcon from '@src/assets/images/logo/Info_icon.png'
 
 
 // ** Third Party Components
-import { CustomInput, Card, CardBody, CardText, Form, FormGroup, Label, Input, Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverHeader, PopoverBody, Spinner, InputGroup, InputGroupText } from 'reactstrap'
+import { CustomInput, Card, CardBody, CardText, Form, FormGroup, Label, Progress, Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverHeader, PopoverBody, Spinner, InputGroup, InputGroupText } from 'reactstrap'
 import { User, Star, Globe, Phone, Calendar, Linkedin, Facebook, Twitter, MapPin, AlertCircle } from 'react-feather'
 
 const AccountSettings = () => {
@@ -46,6 +46,9 @@ const AccountSettings = () => {
   const [dob, setDob] = useState(null)
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [score, setScore] = useState(0)
+  const [strength, setStrength] = useState('')
+  const [color, setColor] = useState('')
 
   // useEffect(() => {
   //   if (Storage.get('auth') === null) {
@@ -159,6 +162,63 @@ const AccountSettings = () => {
     //     }
     //   })
   }
+  const hasLowerCase = (str) => {
+    return str.toUpperCase !== str
+  }
+
+  const hasUpperCase = (str) => {
+    return str.toLowerCase !== str
+  }
+
+  const hasNumber = (str) => {
+    return /\d/.test(str)
+  }
+
+  const hasSymbols = (str) => {
+    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+    return format.test(str)
+  }
+
+  const handlePasswordChange = ({ target: { value } }) => {
+    // 8 charaters, lower case, upper case, speacial charaters, number
+    let temp_score = 0, temp_strength = '', temp_color = ''
+    if (!value.length) {
+      setScore(temp_score); setStrength(temp_strength)
+      setNewPassword(value)
+      return
+    }
+    if (value.length < 3) {
+      temp_score = 15
+      temp_strength = 'Too short'
+      setScore(temp_score); setStrength(temp_strength)
+      setNewPassword(value)
+      setColor('danger')
+      return
+    }
+    if (hasLowerCase(value) && hasUpperCase(value)) {
+      temp_score = 25
+      temp_strength = 'Weak'
+      temp_color = 'danger'
+
+    }
+    if (hasLowerCase(value) && hasUpperCase(value) && hasNumber(value)) {
+      temp_score = 50
+      temp_strength = 'Good'
+      temp_color = 'warning'
+    }
+    if (hasLowerCase(value) && hasUpperCase(value) && hasNumber(value) && hasSymbols(value)) {
+      temp_score = 75
+      temp_strength = 'Strong'
+      temp_color = 'info'
+    }
+    if (hasLowerCase(value) && hasUpperCase(value) && hasNumber(value) && hasSymbols(value) && value.length >= 8) {
+      temp_score = 100
+      temp_strength = 'Excellent'
+      temp_color = 'info'
+    }
+    setScore(temp_score); setStrength(temp_strength); setColor(temp_color)
+    setNewPassword(value)
+  }
 
   const onSubmitPassword = (val) => {
 
@@ -198,7 +258,7 @@ const AccountSettings = () => {
     <>
       <h2 className='text-white mb-4'>Account Settings</h2>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row className="justify-content-center">
@@ -242,11 +302,10 @@ const AccountSettings = () => {
                               innerRef={register({ required: true, validate: value => value !== '' })}
                             />
                           </InputGroup>
-                          <PasswordStrengthBar
-                            password={newPassword}
-                            scoreWords={['weak', 'okay', 'good', 'strong', 'Excellent']}
-                            minScore={2}
-                            minLength={5} />
+                          <Progress value={score} color={color} />
+                          <div className='text-right'>
+                            <span className={`text-right text-${color}`}>{strength}</span>
+                          </div>
                           <small className="text-danger">{errors.newPassword?.message}</small>
                         </FormGroup>
                       </Col>
@@ -276,7 +335,7 @@ const AccountSettings = () => {
         </Col>
       </Row>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row className="justify-content-center">
@@ -315,7 +374,7 @@ const AccountSettings = () => {
         </Col>
       </Row>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row className="justify-content-between align-items-center">
@@ -342,7 +401,7 @@ const AccountSettings = () => {
         </Col>
       </Row>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row className="justify-content-center">
@@ -355,7 +414,7 @@ const AccountSettings = () => {
         </Col>
       </Row>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-1'>
               <Row className="justify-content-center">
@@ -382,7 +441,7 @@ const AccountSettings = () => {
         </Col>
       </Row>
       <Row className='auth-inner'>
-        <Col lg='12' sm='12'>
+        <Col lg='8' sm='12'>
           <Card className='w-100 bg-menu'>
             <CardBody className='p-2'>
               <div className='d-flex'>
