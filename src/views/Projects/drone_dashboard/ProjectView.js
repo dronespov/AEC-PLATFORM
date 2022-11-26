@@ -44,7 +44,7 @@ const ProjectView = () => {
 
     const images = [
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
             title: 'Project Name'
         },
         {
@@ -52,19 +52,11 @@ const ProjectView = () => {
             title: 'Folder Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
             title: 'Project Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
-            title: 'Project Name'
-        },
-        {
-            image: <div className="folder-bg d-flex align-items-center justify-content-center" onClick={() => history.push('/folder')}><FcFolder size={50} /></div>,
-            title: 'Folder Name'
-        },
-        {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
             title: 'Project Name'
         },
         {
@@ -72,13 +64,21 @@ const ProjectView = () => {
             title: 'Folder Name'
         },
         {
-            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
+            title: 'Project Name'
+        },
+        {
+            image: <div className="folder-bg d-flex align-items-center justify-content-center" onClick={() => history.push('/folder')}><FcFolder size={50} /></div>,
+            title: 'Folder Name'
+        },
+        {
+            image: <img src={require('../../../assets/images/drone-images/dashboard-project.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
             title: 'Project Name'
         }
     ]
     const listImages = [
         {
-            image: <img src={require('../../../assets/images/drone-images/map1.png').default} className="img-fluid" onClick={() => history.push('/ACE_platform')} />,
+            image: <img src={require('../../../assets/images/drone-images/map1.png').default} className="img-fluid" onClick={() => history.push('/AEC_platform')} />,
             title: 'Project Name'
         },
         {

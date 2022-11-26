@@ -8,7 +8,7 @@ import ColorPicker from "./ColorPicker"
 import Timeline from "../../components/timeline"
 
 
-const ACE_Platform = () => {
+const AEC_Platform = () => {
 
     const [collapseLeft, setCollapseLeft] = useState(false)
 
@@ -168,4 +168,4 @@ const ACE_Platform = () => {
     )
 }
 
-export default ACE_Platform
+export default AEC_Platform

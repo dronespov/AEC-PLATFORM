@@ -100,8 +100,8 @@ const PagesRoutes = [
     layout: 'BlankLayout'
   },
   {
-    path: '/ACE_platform',
-    component: lazy(() => import('../../views/ACE_Platform')),
+    path: '/AEC_platform',
+    component: lazy(() => import('../../views/AEC_Platform')),
     layout: 'BlankLayout'
   },
   {
